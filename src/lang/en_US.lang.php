@@ -368,6 +368,7 @@ $sm_lang = array(
         'pushover_error_nokey' => 'Unable to send test notification: no Pushover key found in your profile.',
         'telegram_sent' => 'Telegram notification sent',
         'telegram_error' => 'An error has occurred while sending the Telegram notification: %s',
+        'telegram_connection_error' => 'Unable to establish connection to telegram.org',
         'telegram_error_notoken' => 'Unable to send test notification: no Telegram API token found in the global
  configuration.',
         'telegram_error_noid' => 'Unable to send test notification: no chat id found in your profile.',

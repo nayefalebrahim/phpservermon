@@ -941,12 +941,22 @@ namespace {
         public function sendurl()
         {
             $con = curl_init($this->url);
+            $headers = [
+                'Accept: application/json',            
+            ];
             curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($con, CURLOPT_CONNECTTIMEOUT, 5);
             curl_setopt($con, CURLOPT_TIMEOUT, 60);
+            curl_setopt($con, CURLOPT_HEADER, 0);
+            curl_setopt($con, CURLOPT_HTTPHEADER, $headers);
             $response = curl_exec($con);
-            $response = json_decode($response, true);
-            return $response;
+            curl_close($con);
+
+            if($con === false || $response === false) {
+                return ['description' => psm_get_lang('config', 'telegram_connection_error')];
+            }
+
+            return json_decode($response, true);
         }
         public function send()
         {
